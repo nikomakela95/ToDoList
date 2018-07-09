@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>To do list</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!-- Custom fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- CSS styling -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="stylecheckbox.css">
+
+    <!-- Custom icon -->
+    <link rel="icon" href="https://crunchify.com/favicon.ico">
+
+</head>
+<body>
+
+<div class="">
+<nav class="bg-secondary text-uppercase" id="mainNav">
+    <div class="container">
+    	<h1>TO DO LIST</h1>
+    </div>
+</nav>
+</div>
+
+<div class="container">
+
+<div class="bg-2 header">
+  	<div class="row">
+  	<form  id="inputform" method="get">
+    	<div class="textInput col-md-6">
+    		<label id="inputlabel" for="textInput"> Your task: </label>
+        	<input type="text" id="textInput" placeholder="Write something">
+      	<span class="error"></span> 
+    	</div>
+    	<div class="dateInput col-md-6">
+    		<label id="inputlabel" for="dateInput"> Date for the task: </label>
+        	<input type="date" id="dateInput" name="date" required pattern="[0-9]{2}-[0-9]{2}-[0-9]{4}">
+        	<span class="error"></span>
+    	</div>
+  	</form>
+  	</div>
+    <div class="row">
+        <div class="col-md-6">
+      		<input type="checkbox" id="checkbox" class="css-checkbox lrg">
+      		<label for="checkbox" class="css-label lrg vlad">Urgent</label>
+      	</div>
+    	<div class="col-md-6">
+        	<span onclick="addRow()" class="addBtn btn btn-primary">Add item</span>
+    	</div>
+    </div>
+</div>
+
+
+<div>
+<div class="bg-2">
+  <div class="bg-2 Taskhead col-md-6">
+    <h2><u><b>Task</b></u></h2>
+  </div>
+  <div class="bg-2 Datehead col-md-6">
+    <h2><u><b>Date</b></u></h2>
+  </div>
+</div>
+</div>
+
+
+<table class="bg-2" id="table">
+   <div class="row">
+  		<tr>
+  		</tr>
+	</div>
+</table>
+</div>
+
+
+<script>
+
+// Click on a close button to hide the task
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+  //Add user inputs to the table (Add new row)
+  function addRow() {
+   "use strict";
+
+   	var x = document.getElementById("checkbox"); //Find element by id 'checkbox'
+    var table = document.getElementById("table"); //Find element by id 'table'
+    var row = document.createElement("tr"); //Create new element t
+    console.log(row);
+    var td1 = document.createElement("td1"); //Create new element td1
+    var td2 = document.createElement("td2"); //Create new element td2
+	  var Fielderr = document.getElementsByClassName('error');
+    
+    td1.innerHTML = document.getElementById("textInput").value; //td1 value = text from the textInput field
+    td2.innerHTML  = document.getElementById("dateInput").value; //td2 value = date from dateInput field
+
+//Give alert if textInput field is empty
+if (td1.innerHTML == '') {
+  	alert("You can't leave the inputs empty!");
+  	Fielderr[0].innerHTML = "&larr; You can't leave this empty!";
+  	Fielderr[1].innerHTML = "";
+  	return;
+}
+//Give alert if textInput field includes invalid characters (e.g. numbers)
+if (!/^[a-zA-ZäöåÄÖÅ' ']*$/g.test(td1.innerHTML)) {
+	alert("Invalid characters on text field!");
+	Fielderr[0].innerHTML = "&larr; Use only A-Z characters!";
+	document.getElementById("textInput").value = '';
+	return;
+} if(/^[' ']*$/g.test(td1.innerHTML)){
+	alert("Invalid characters on text field!");
+	Fielderr[0].innerHTML = "&larr; Use only A-Z characters!";
+	document.getElementById("textInput").value = '';
+	return;
+}
+//Give alert if dateInput field is empty
+if (td2.innerHTML == '') {
+  	alert("You can't leave the inputs empty!");
+    Fielderr[1].innerHTML = "&larr; You must input the date!";
+    Fielderr[0].innerHTML = "";
+    return;
+//If no alerts, get the inputs 
+} else {
+   	Fielderr[0].innerHTML =''; 
+   	Fielderr[1].innerHTML ='';
+   	document.getElementById("textInput").value = '';
+   	document.getElementById("dateInput").value = '';
+    //Show user inputs on the table
+    row.appendChild(td1);
+    row.appendChild(td2);
+}
+//If 'Urgent button' is pressed change input colors to red
+if (x.checked == true) {
+      td1.style.color = "red";
+      td2.style.color = "red";
+}
+    table.children[0].appendChild(row);
+
+  //Create close button 'X' to the each row on the table
+  var span = document.createElement("SPAN"); 
+  var txt = document.createTextNode("X"); 
+  span.className = "close"; //Set class for span
+  span.appendChild(txt); 
+  row.appendChild(span); 
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+//Function for marking the clicked row
+function highlight(e) {
+  var element = e.target;
+   if (element.parentNode.classList.contains('checked') ){ //If selected row has already class 'checked', change it to class 'table' 
+    element.parentNode.className = 'table';
+   } else {
+    e.target.parentNode.className = 'checked'; //Add class 'checked' to selected row (highlight the row)
+  }
+}
+
+var table = document.getElementById('table'), 
+    checked = table.getElementsByTagName('tr') 
+    table.onclick = highlight; //When row on the table is clicked, do function highlight
+
+
+</script>
+
+</body>
+</html>

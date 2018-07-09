@@ -1,0 +1,169 @@
+
+* {
+    box-sizing: border-box;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+  body{
+    background-color: #f9e9d0;
+  }
+
+
+  .row{
+    overflow: hidden;
+  }
+
+  #mainNav {
+  	color: #bff0a1;
+  	padding-top: 3rem;
+  	padding-bottom: 3rem;
+  	font-weight: 700;
+  	font-family: 'Montserrat';
+  } 
+
+  .header {
+  	border-right:solid;
+  	border-left: solid;
+    color: white;
+    padding: 15px 32px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+  }
+
+	#inputlabel{
+		display: block;
+	}
+
+  .textInput{
+    margin-bottom: 10px;
+  }
+
+
+  .addBtn {
+    border-radius: 50px;
+    color: white;
+    padding: 15px 32px ;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  .Taskhead{
+  	border-left: solid;
+    width:50%;
+    float: left;
+  }
+
+  .Datehead{
+  	border-right: solid;
+    width:50%;
+    float: right;
+  }
+
+
+  table{
+  	cursor: pointer;
+  	border: solid;
+  	border-top: 0;
+  	border-collapse: inherit;
+  	table-layout: fixed;
+  	width: 100%;
+  }
+
+
+  td1 {
+  	width:50%;
+    float: left;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+  }
+
+  td2{
+  	width: 40%;
+  	float:left;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+  }
+
+  .close{
+  	width:10%;
+    float: right;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: 200;
+    line-height: 30px;
+    color: red;
+    opacity: 0.6;
+  }
+
+  .close:hover {
+  color: black;
+}
+
+
+
+  input, select, textarea{
+      color: #6565bf;
+  }
+
+  textarea:focus, input:focus {
+      color: #6565bf;
+  }
+
+  .bg-secondary {
+      background-color: #2C3E50 !important;
+  }
+
+  .bg-2{
+    background-color: #ffffcc !important;
+  }
+
+
+  #itemList{
+    padding-bottom: 20px;
+  }
+
+  #inputs {
+    margin-bottom: 10px;
+  }
+
+  .error{
+    color: red;
+  }
+
+  /* When clicked on, add a background color and strike out text */
+  .checked {
+    
+    background: black;
+    color: #fff;
+    text-decoration: line-through !important;
+    opacity: 0.2;
+}
+
+
+
+  @media only screen and (max-width: 320px) {
+
+   body { 
+      font-size: 2em; 
+   }
+
+
+
+
+
+
